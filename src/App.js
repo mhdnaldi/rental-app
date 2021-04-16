@@ -1,17 +1,32 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./hooks/Auth/Login/Login";
 import Register from "./hooks/Auth/Register/Register";
 import Home from "./hooks/Home/Home";
+import { connect } from "react-redux";
 
-const App = () => {
+const App = (props) => {
   return (
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/Register' component={Register} />
+      {props.token ? (
+        <Redirect to='/' />
+      ) : (
+        <Route exact path='/login' component={Login} />
+      )}
+      {props.token ? (
+        <Redirect to='/' />
+      ) : (
+        <Route exact path='/register' component={Register} />
+      )}
     </Switch>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token !== null,
+  };
+};
+
+export default connect(mapStateToProps)(App);
