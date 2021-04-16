@@ -1,0 +1,33 @@
+.register {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.register img {
+  width: 100%;
+}
+
+.register__form {
+  /* background-color: red; */
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.register__form h2 {
+  margin-bottom: 40px;
+  font-size: 48px;
+}
+
+.register__form p {
+  margin: 20px 0px;
+  font-size: 24px;
+  text-align: center;
+  color: #393939;
+}
+
+.register__footer {
+  background-color: #f9f9fb;
+}
