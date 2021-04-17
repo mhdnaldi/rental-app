@@ -9,6 +9,11 @@
   width: 100%;
 }
 
+.register__container {
+  display: grid;
+  grid-template-rows: 0.5fr auto;
+}
+
 .register__form {
   /* background-color: red; */
   width: 80%;

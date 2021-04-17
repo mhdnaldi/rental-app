@@ -4,6 +4,7 @@ import background from "../../../assets/images/auth.png";
 import styles from "./Register.module.css";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
+import AuthFooter from "../../../components/Footer/AuthFooter/AuthFooter";
 
 const Register = (props) => {
   const [registerForm, setRegisterForm] = useState({
@@ -57,7 +58,7 @@ const Register = (props) => {
   return (
     <div className={styles.register}>
       <img src={background} alt='' />
-      <div>
+      <div className={styles.register__container}>
         <div className={styles.register__form}>
           <h2>Sign Up</h2>
           <form>
@@ -74,7 +75,7 @@ const Register = (props) => {
             Login
           </Button>
         </div>
-        <div className={styles.register__footer}>t</div>
+        <AuthFooter />
       </div>
     </div>
   );

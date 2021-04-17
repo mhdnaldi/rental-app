@@ -4,7 +4,7 @@
   height: 79px;
   border: none;
   border-radius: 10px;
-  background-color: #ffcd61;
+  background-color: var(--warning);
   font-size: 24px;
   font-weight: 900;
   color: #111;
@@ -13,13 +13,13 @@
 }
 
 .button__secondary {
-  background-color: #393939;
-  color: #ffcd61;
+  background-color: var(--secondary);
+  color: var(--warning);
 }
 
 .button.button__secondary:hover {
   background-color: #2c2c2c;
-  color: #ffcd61;
+  color: var(--warning);
 }
 
 .button:hover {

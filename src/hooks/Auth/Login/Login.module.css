@@ -1,0 +1,38 @@
+.login {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.login img {
+  width: 100%;
+}
+
+.login__container {
+  display: grid;
+  grid-template-rows: 0.5fr auto;
+}
+
+.login__form {
+  /* background-color: red; */
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.login__form h2 {
+  margin-bottom: 40px;
+  font-size: 48px;
+}
+
+.login__form p {
+  margin: 20px 0px;
+  font-size: 24px;
+  text-align: center;
+  color: #393939;
+}
+
+.login__footer {
+  background-color: #f9f9fb;
+}
