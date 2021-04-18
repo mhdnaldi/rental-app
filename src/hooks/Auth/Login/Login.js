@@ -6,6 +6,8 @@ import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import AuthFooter from "../../../components/Footer/AuthFooter/AuthFooter";
 
+import { useHistory } from "react-router-dom";
+
 const Login = (props) => {
   const [loginForm, setLoginForm] = useState({
     email: {
@@ -19,6 +21,8 @@ const Login = (props) => {
       value: "",
     },
   });
+
+  const history = useHistory();
 
   const inputChangeHandler = (e, id) => {
     const updatedForm = { ...loginForm };
@@ -56,7 +60,10 @@ const Login = (props) => {
               Login
             </Button>
           </form>
-          <Button type='button' class='button button__secondary'>
+          <Button
+            click={() => history.push("/register")}
+            type='button'
+            class='button button__secondary'>
             Sign Up
           </Button>
         </div>

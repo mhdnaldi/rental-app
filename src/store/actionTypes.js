@@ -10,3 +10,4 @@ export const LOGIN_FAILED = "LOGIN_FAILED";
 
 export const LOGOUT = "LOGOUT";
 export const CHECK_AUTH_STATE = "CHECK_AUTH_STATE";
+export const CLEAR_STATE = "CLEAR_STATE";

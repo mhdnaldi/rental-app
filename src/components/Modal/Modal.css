@@ -1,0 +1,30 @@
+.modal {
+  position: fixed;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 40%;
+  padding: 20px 30px;
+  background-color: var(--primary);
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+  box-shadow: var(--shadow);
+}
+/* 
+.modal__open {
+  transform: translateY(0) translateX(-50%);
+}
+
+.modal__close {
+  transform: translateY(-200px) translateX(-50%);
+}
+
+/* .modal__backdrop {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+} */

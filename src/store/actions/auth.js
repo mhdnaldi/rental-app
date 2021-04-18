@@ -1,10 +1,28 @@
 import * as actionTypes from "../actionTypes";
 import axios from "axios";
 
+// CLEAR STATE
+export const clearState = () => {
+  return {
+    type: actionTypes.CLEAR_STATE,
+  };
+};
+
 // REGISTER
-export const registerStart = () => {
+export const registerStart = (payload, role) => {
+  let data = {
+    username: payload.username.value,
+    email: payload.email.value,
+    password: payload.password.value,
+    confirm_password: payload.confirm_password.value,
+    role,
+  };
   return (dispatch) => {
     dispatch(registerPending());
+    axios
+      .post(`${process.env.REACT_APP_URL}users/register`, data)
+      .then((res) => dispatch(registerSuccess(res)))
+      .catch((err) => dispatch(registerFailed(err)));
   };
 };
 export const registerPending = () => {
@@ -12,16 +30,16 @@ export const registerPending = () => {
     type: actionTypes.REGISTER_PENDING,
   };
 };
-export const registerSuccess = (data) => {
+export const registerSuccess = (payload) => {
   return {
     type: actionTypes.REGISTER_SUCCESS,
-    data: data,
+    response: payload.data.message,
   };
 };
 export const registerFailed = (err) => {
   return {
-    type: actionTypes.LOGIN_FAILED,
-    response: err,
+    type: actionTypes.REGISTER_FAILED,
+    response: err.response.data.message,
   };
 };
 

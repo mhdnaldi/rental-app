@@ -11,7 +11,7 @@ import Instagram from "@material-ui/icons/Instagram";
 const AuthFooter = () => {
   return (
     <div className={styles.authfooter}>
-      <img src={group} alt='' />
+      <img className={styles.authfooter__group} src={group} alt='' />
       <div className={styles.authfooter__text}>
         <div>
           <p>

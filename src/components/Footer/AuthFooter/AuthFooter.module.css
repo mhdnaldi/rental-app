@@ -5,7 +5,8 @@
   padding: 40px;
   display: grid;
 }
-.authfooter img {
+
+.authfooter .authfooter__group {
   height: 43px;
   width: 44px;
 }
