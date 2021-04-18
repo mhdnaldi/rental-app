@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr;
+  place-items: center;
+}
+
+.header__nav {
+  /* margin: 20px; */
+  display: flex;
+  margin: 0 20px;
+}
+
+.header__button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.header__link li {
+  display: inline-block;
+}
+
+.header__link li a {
+  text-decoration: none;
+  margin: 0 30px;
+  color: #b8becd;
+}

@@ -44,9 +44,17 @@ export const registerFailed = (err) => {
 };
 
 // LOGIN
-export const loginStart = () => {
+export const loginStart = (payload) => {
+  let data = {
+    email: payload.email.value,
+    password: payload.password.value,
+  };
   return (dispatch) => {
     dispatch(loginPending());
+    axios
+      .post(`${process.env.REACT_APP_URL}users/login`, data)
+      .then((res) => dispatch(loginSuccess(res)))
+      .catch((err) => dispatch(loginFailed(err)));
   };
 };
 export const loginPending = () => {
@@ -55,15 +63,16 @@ export const loginPending = () => {
   };
 };
 export const loginSuccess = (data) => {
+  localStorage.setItem("token", data.data.result.token);
   return {
     type: actionTypes.LOGIN_SUCCESS,
-    data: data,
+    user: data.data.result,
   };
 };
 export const loginFailed = (err) => {
   return {
     type: actionTypes.LOGIN_FAILED,
-    response: err,
+    response: err.response.data.message,
   };
 };
 

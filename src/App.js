@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./hooks/Auth/Login/Login";
 import Register from "./hooks/Auth/Register/Register";
 import Home from "./hooks/Home/Home";
+import NotFound from "./hooks/404/404";
+
 import { connect } from "react-redux";
 
 const App = (props) => {
@@ -19,6 +21,8 @@ const App = (props) => {
       ) : (
         <Route exact path='/register' component={Register} />
       )}
+      <Route path='/404' component={NotFound} />
+      <Redirect to='/404' />
     </Switch>
   );
 };

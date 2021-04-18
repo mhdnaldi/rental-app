@@ -4,6 +4,7 @@ const initialState = {
   token: null,
   response: null,
   loading: false,
+  user: null,
 };
 
 const authReducers = (state = initialState, action) => {
@@ -39,6 +40,7 @@ const authReducers = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        user: action.user,
         response: action.response,
       };
     case actionTypes.LOGIN_FAILED:

@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import background from "../../../assets/images/auth.png";
 import styles from "./Register.module.css";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import AuthFooter from "../../../components/Footer/AuthFooter/AuthFooter";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import Modal from "../../../components/Modal/Modal";
-import { useHistory } from "react-router-dom";
-
-import { connect } from "react-redux";
 import * as actions from "../../../store/index";
 
 const Register = (props) => {
