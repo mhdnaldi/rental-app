@@ -1,15 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Input from "../../components/Input/Input";
+import ImageIcon from "@material-ui/icons/Image";
 import { connect } from "react-redux";
 
 import styles from "./Profile.module.css";
 
 const Profile = (props) => {
-  console.log(props);
+  const [images, setImages] = useState(undefined);
+  const [profiles, setProfiles] = useState({
+    username: {
+      label: "Username",
+      value: "",
+      type: "text",
+    },
+    password: {
+      label: "Password",
+      value: "",
+      type: "password",
+    },
+    address: {
+      label: "Address",
+      value: "",
+      type: "text",
+    },
+    phone: {
+      label: "Phone Number",
+      value: "",
+      type: "number",
+    },
+  });
+  let formElement = [];
+  for (let key in profiles) {
+    formElement.push({
+      id: key,
+      config: profiles[key],
+    });
+  }
+
+  const inputChangeHandler = (e, id) => {
+    const updatedForm = { ...profiles };
+    profiles[id].value = e.target.value;
+    setProfiles(updatedForm);
+  };
+
+  let element = null;
+  element = formElement.map((el) => (
+    <Input
+      key={el.id}
+      labelStyle={styles.profile__edit}
+      label={el.config.label}
+      value={el.config.value}
+      type={el.config.type}
+      placeholder={el.config.placeholder}
+      className={styles.profile__edit}
+      change={(e) => inputChangeHandler(e, el.id)}
+    />
+  ));
+
   return (
-    <>
+    <div>
       <Header />
       <div className={styles.profile}>
         <h2>Profile</h2>
@@ -19,38 +70,21 @@ const Profile = (props) => {
             alt=''
             className={styles.profile__image}
           />
+          <div className={styles.file__input}>
+            <ImageIcon style={{ color: "FEA832" }} />
+            <input type='file' />
+          </div>
           <h3>{props.user.username}</h3>
           <p>{props.user.email}</p>
           <p>+62{props.user.phone}</p>
         </div>
         <h2>Edit Profile</h2>
         <div className={styles.profile__edit}>
-          <form>
-            <Input
-              labelStyle={styles.profile__edit}
-              label='Username'
-              className={styles.profile__edit}
-            />
-            <Input
-              labelStyle={styles.profile__edit}
-              label='Password'
-              className={styles.profile__edit}
-            />
-            <Input
-              labelStyle={styles.profile__edit}
-              label='Address'
-              className={styles.profile__edit}
-            />
-            <Input
-              labelStyle={styles.profile__edit}
-              label='Phone Number'
-              className={styles.profile__edit}
-            />
-          </form>
+          <form>{element}</form>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

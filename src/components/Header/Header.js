@@ -8,7 +8,6 @@ import Button from "../Button/Button";
 
 const Header = (props) => {
   const history = useHistory();
-  console.log(props.user);
   return (
     <div className={styles.header}>
       <img src={group} alt='' />
