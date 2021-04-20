@@ -8,7 +8,7 @@
 
 .footer__details {
   display: grid;
-  padding: 40px 20px;
+  padding: 40px;
   color: #848484;
   font-weight: 300;
   gap: 20px;
@@ -26,4 +26,20 @@
 .footer__nav p:nth-child(1) {
   font-weight: bold;
   color: #111111;
+}
+
+.footer__lines {
+  width: 80%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: #848484;
+}
+
+.footer__socmed {
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  padding: 40px;
 }

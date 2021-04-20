@@ -6,7 +6,10 @@ const Card = (props) => {
   return (
     <div className={styles.card}>
       <img src={one} alt='' />
-      <div className={styles.card__details}></div>
+      <div className={styles.card__details}>
+        <p>{props.title}</p>
+        <p>{props.text}</p>
+      </div>
     </div>
   );
 };
