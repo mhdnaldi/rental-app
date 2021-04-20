@@ -2,8 +2,8 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Carousel from "../../components/Carousel/Carousel";
 import styles from "./Home.module.css";
-import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
+import Popular from "../../components/Popular/Popular";
 import user from "../../assets/images/user.png";
 import vector from "../../assets/images/vector.png";
 
@@ -12,15 +12,7 @@ const Home = (props) => {
     <div className={styles.home}>
       <Header />
       <Carousel />
-      <div className={styles.popular__section}>
-        <h2>Popular In Town</h2>
-        <div className={styles.popular__list}>
-          <Card title='Merapi' text='Yogyakarta' />
-          <Card title='Danau Toba' text='Prapat' />
-          <Card title='Bromo' text='Malang' />
-          <Card title='Malioboro' text='Yogyakarta' />
-        </div>
-      </div>
+      <Popular />
       <div className={styles.testimonial__section}>
         <h2>Testimonials</h2>
         <div className={styles.testimonial__grid}>

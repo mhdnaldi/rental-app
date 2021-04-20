@@ -4,14 +4,17 @@ import styles from "./Input.module.css";
 
 const Input = (props) => {
   return (
-    <input
-      placeholder={props.placeholder}
-      value={props.value}
-      type={props.type}
-      className={styles.input}
-      autoComplete='off'
-      onChange={props.change}
-    />
+    <>
+      <label className={props.labelStyle}>{props.label}</label>
+      <input
+        placeholder={props.placeholder}
+        value={props.value}
+        type={props.type}
+        className={`${styles.input} ${props.className}`}
+        autoComplete='off'
+        onChange={props.change}
+      />
+    </>
   );
 };
 

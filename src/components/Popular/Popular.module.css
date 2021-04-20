@@ -1,0 +1,16 @@
+.popular__section {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.popular__section h2 {
+  padding: 0 20px;
+}
+
+.popular__list {
+  margin: 20px 0 80px 0;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}

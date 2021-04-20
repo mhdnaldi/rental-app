@@ -4,12 +4,26 @@
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
   place-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.26);
 }
 
 .header__nav {
   /* margin: 20px; */
   display: flex;
   margin: 0 20px;
+}
+
+.header__user {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  place-items: center;
+}
+
+.header__user__image img {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
 }
 
 .header__button {

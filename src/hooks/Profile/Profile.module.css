@@ -1,0 +1,44 @@
+.profile {
+  display: grid;
+  width: 90%;
+  margin: 30px auto;
+}
+
+.profile__details {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+}
+
+.profile__details p {
+  font-size: 14px;
+  color: #848484;
+}
+
+.profile__image {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.profile__edit form {
+}
+
+.profile__edit label {
+  display: block;
+  margin-top: 20px;
+  color: #848484;
+}
+
+.profile__edit input {
+  outline: none;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  text-indent: 8px;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: #fff;
+  border-radius: 0px;
+  margin: 0;
+}
