@@ -49,6 +49,12 @@ const authReducers = (state = initialState, action) => {
         loading: false,
         response: action.response,
       };
+    case actionTypes.LOGOUT:
+      return {
+        ...state,
+        user: null,
+        response: action.response,
+      };
     default:
       return state;
   }

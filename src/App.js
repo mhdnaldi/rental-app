@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./hooks/Auth/Login/Login";
 import Register from "./hooks/Auth/Register/Register";
@@ -6,10 +6,16 @@ import Home from "./hooks/Home/Home";
 import Vehicle from "./hooks/Vehicle/Vehicle";
 import Profile from "./hooks/Profile/Profile";
 import NotFound from "./hooks/404/404";
+import * as actions from "./store/index";
 
 import { connect } from "react-redux";
 
 const App = (props) => {
+  const { checkAuthState } = props;
+  useEffect(() => {
+    checkAuthState();
+  }, [checkAuthState]);
+
   return (
     <Switch>
       <Route exact path='/' component={Home} />
@@ -29,4 +35,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkAuthState: () => dispatch(actions.checkAuthState()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

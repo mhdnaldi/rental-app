@@ -1,1 +1,8 @@
-export { loginStart, registerStart, clearState } from "./actions/auth";
+export {
+  loginStart,
+  registerStart,
+  clearState,
+  checkAuthState,
+  patchUserStart,
+  logout,
+} from "./actions/auth";

@@ -63,12 +63,16 @@ export const loginPending = () => {
   };
 };
 export const loginSuccess = (data) => {
+  console.log(data);
   localStorage.setItem("token", data.data.result.token);
+  localStorage.setItem("user", JSON.stringify(data.data.result));
+  localStorage.setItem("UID", JSON.stringify(data));
   return {
     type: actionTypes.LOGIN_SUCCESS,
     user: data.data.result,
   };
 };
+
 export const loginFailed = (err) => {
   return {
     type: actionTypes.LOGIN_FAILED,
@@ -78,13 +82,52 @@ export const loginFailed = (err) => {
 
 // LOGOUT & CHECK STATE
 export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  localStorage.removeItem("UID");
   return {
     type: actionTypes.LOGOUT,
   };
 };
 
 export const checkAuthState = () => {
+  const token = localStorage.getItem("token");
+  return (dispatch) => {
+    if (!token) {
+      dispatch(logout());
+    } else {
+      const uid = localStorage.getItem("UID");
+      dispatch(loginSuccess(JSON.parse(uid)));
+    }
+  };
+};
+
+export const patchUserStart = (payload, id) => {
+  const data = {
+    username: payload.username.value,
+    address: payload.address.value,
+    phone: payload.phone.value,
+    password: payload.password.value,
+    images: payload.images,
+  };
+
+  return (dispatch) => {
+    axios
+      .patch(`${process.env.REACT_APP_URL}users/${id}`, data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.response));
+  };
+  // return {};
+};
+
+export const patchUserSuccess = () => {
   return {
-    type: actionTypes.CHECK_AUTH_STATE,
+    type: actionTypes.PATCH_USER_SUCCESS,
+  };
+};
+
+export const patchUserFailed = () => {
+  return {
+    type: actionTypes.PATCH_USER_FAILED,
   };
 };
