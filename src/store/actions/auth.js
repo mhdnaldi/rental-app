@@ -63,7 +63,6 @@ export const loginPending = () => {
   };
 };
 export const loginSuccess = (data) => {
-  console.log(data);
   localStorage.setItem("token", data.data.result.token);
   localStorage.setItem("user", JSON.stringify(data.data.result));
   localStorage.setItem("UID", JSON.stringify(data));
@@ -103,31 +102,35 @@ export const checkAuthState = () => {
 };
 
 export const patchUserStart = (payload, id) => {
-  const data = {
-    username: payload.username.value,
-    address: payload.address.value,
-    phone: payload.phone.value,
-    password: payload.password.value,
-    images: payload.images,
-  };
-
+  const formData = new FormData();
+  formData.append("images", payload.images);
+  formData.append("username", payload.username.value);
+  formData.append("address", payload.address.value);
+  formData.append("phone", +payload.phone.value);
+  formData.append("password", payload.password.value);
   return (dispatch) => {
     axios
-      .patch(`${process.env.REACT_APP_URL}users/${id}`, data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.response));
+      .patch(`${process.env.REACT_APP_URL}users/${id}`, formData)
+      .then((res) => {
+        dispatch(patchUserSuccess(res));
+        localStorage.setItem("UID", JSON.stringify(res));
+        dispatch(checkAuthState());
+      })
+      .catch((err) => dispatch(patchUserFailed(err)));
   };
-  // return {};
 };
 
-export const patchUserSuccess = () => {
+export const patchUserSuccess = (payload) => {
   return {
     type: actionTypes.PATCH_USER_SUCCESS,
+    user: payload.data.result,
+    response: payload.data.message,
   };
 };
 
-export const patchUserFailed = () => {
+export const patchUserFailed = (err) => {
   return {
     type: actionTypes.PATCH_USER_FAILED,
+    response: err.response.data.message,
   };
 };

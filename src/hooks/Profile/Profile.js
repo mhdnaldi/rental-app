@@ -7,12 +7,13 @@ import ImageIcon from "@material-ui/icons/Image";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/index";
+import Modal from "../../components/Modal/Modal";
 
 import styles from "./Profile.module.css";
 
 const Profile = (props) => {
   const history = useHistory();
-  const [images, setImages] = useState(undefined);
+  const [images, setImages] = useState(null);
   const [profiles, setProfiles] = useState({
     username: {
       label: "Username",
@@ -77,6 +78,7 @@ const Profile = (props) => {
 
   return (
     <div>
+      {props.response && <Modal>{props.response}</Modal>}
       <Header />
       {props.user && (
         <div className={styles.profile}>
@@ -144,6 +146,7 @@ const Profile = (props) => {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    response: state.auth.response,
   };
 };
 

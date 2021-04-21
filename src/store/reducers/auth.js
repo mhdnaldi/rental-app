@@ -41,7 +41,6 @@ const authReducers = (state = initialState, action) => {
         ...state,
         loading: false,
         user: action.user,
-        response: action.response,
       };
     case actionTypes.LOGIN_FAILED:
       return {
@@ -55,6 +54,18 @@ const authReducers = (state = initialState, action) => {
         user: null,
         response: action.response,
       };
+    case actionTypes.PATCH_USER_SUCCESS:
+      return {
+        ...state,
+        response: action.response,
+      };
+
+    case actionTypes.PATCH_USER_FAILED:
+      return {
+        ...state,
+        response: action.response,
+      };
+
     default:
       return state;
   }
