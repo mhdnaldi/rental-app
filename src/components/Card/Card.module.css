@@ -6,10 +6,17 @@
   margin: 30px 0;
 }
 
-.card img {
+.card__img {
+  border: 1px solid #ccc;
+}
+
+.card__img,
+.card__img img {
   border-radius: 10px;
   width: 284px;
   height: 337px;
+  display: grid;
+  place-items: center;
 }
 
 .card__details {
