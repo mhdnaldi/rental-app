@@ -22,8 +22,8 @@ const Vehicle = (props) => {
         )
         .then((res) => {
           setVehicle(res.data.data.result);
-          setTotal(res.data.data.total_searching / 4);
           console.log(res.data.data);
+          setTotal(res.data.data.total / 4);
           setPage(res.data.data.page);
         })
         .catch((err) => console.log(err));
@@ -32,6 +32,11 @@ const Vehicle = (props) => {
       clearTimeout(timer);
     };
   }, [category, search, page]);
+
+  const changeCategoryhandler = (e) => {
+    setCategory(e);
+    setPage(1);
+  };
 
   let cardElement = null;
   if (vehicle.length > 0) {
@@ -44,7 +49,6 @@ const Vehicle = (props) => {
       <Header />
 
       <Popular />
-      {/* HERE */}
       <div className={styles.vehicle__grid}>
         <div className={styles.vehicle__input}>
           <input
@@ -54,7 +58,7 @@ const Vehicle = (props) => {
           <SearchIcon fontSize='large' />
         </div>
         <div className={styles.vehicle__dropdown}>
-          <select onChange={(e) => setCategory(e.target.value)}>
+          <select onChange={(e) => changeCategoryhandler(e.target.value)}>
             <option value=''>All</option>
             <option value='Bike'>Bike</option>
             <option value='Cars'>Cars</option>
@@ -67,7 +71,6 @@ const Vehicle = (props) => {
       <div className={styles.vehicle__pagination}>
         <Pagination
           count={Math.ceil(total)}
-          page={page}
           onChange={(e, page) => setPage(page)}
         />
       </div>
